@@ -40,6 +40,8 @@ class User(AbstractBaseUser):
         ('F', 'Female'),
     )
 
+    followings = models.ManyToManyField('self', symmetrical=False, related_name='followers', blank=True)
+
     name = models.CharField(max_length=100)
     gender = models.CharField(max_length=1, choices=GENDERS, blank=True)
     age = models.PositiveIntegerField(null=True)
